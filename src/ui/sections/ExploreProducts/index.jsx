@@ -16,7 +16,6 @@ const ExploreProducts = () => {
         className="mb-9"
       />
 
-      {/* Responsive Grid Layout */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-16">
         <ProductCard image={Shirt} title="The North Coat" price={260} rating={5} reviews={65} />
         <ProductCard image={Bag} title="The North Coat" price={180} rating={4} reviews={65} />

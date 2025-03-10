@@ -7,6 +7,7 @@ const Card = ({ title, price, description, rating, image }) => {
   const stars = Math.round(rating?.rate || 0); 
 
   return (
+    
     <div className="relative">
       <div className="p-4 w-[15rem] rounded-lg bg-[#F5F5F5]">
         <img
@@ -22,7 +23,7 @@ const Card = ({ title, price, description, rating, image }) => {
         </div>
       </div>
       
-      <div className="p-4 w-[15rem] rounded-lg">
+      <div className="p-4 w-[15rem] rounded-lg">    
         <h2 className="text-lg font-bold mt-2">{title}</h2>
         <p className="text-md font-semibold mt-1">${price}</p>
 

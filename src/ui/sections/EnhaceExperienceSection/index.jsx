@@ -16,7 +16,6 @@ const EnhanceMusicExperience = () => {
           Enhance Your <br /> Music Experience
         </Typography>
 
-        {/* Countdown Timer - Kept Same */}
         <div className="flex justify-center md:justify-start gap-4">
           <div className="bg-white rounded-full h-[4rem] w-[4rem] p-3 flex items-center justify-center flex-col">
             <Typography variant="h6" className="font-bold">
