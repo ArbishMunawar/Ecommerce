@@ -1,17 +1,17 @@
 import React from "react";
 import Card from "../Card/index";
 import useFetch from "../../../hooks/UseFetch";
-import {useSearchParams} from 'react-router'
-
+import { useSearchParams } from "react-router";
 
 const Products = ({ currentIndex }) => {
   const [searchParams] = useSearchParams();
+
   const { data, isLoading } = useFetch(
-    `${import.meta.env.VITE_REACT_APP_API_URL}/homes${searchParams.toString()}`
+    `${import.meta.env.VITE_REACT_APP_API_URL}/homes?${searchParams.toString()}`
   );
 
-  const visibleSlides = 4; 
-  const translateValue = -(currentIndex * (100 / visibleSlides)); 
+  const visibleSlides = 4;
+  const translateValue = -(currentIndex * (100 / visibleSlides));
   return (
     <div className="w-full max-w-[1350px] mx-auto mt-10 px-4 overflow-hidden">
       <div
@@ -22,9 +22,7 @@ const Products = ({ currentIndex }) => {
           <p>Loading...</p>
         ) : data && data.length > 0 ? (
           data.map(({ id, ...home }) => (
-            <div key={id}>
-              <Card {...home} />
-            </div>
+              <Card {...home} key={id} id={id}/>
           ))
         ) : (
           <p>No Products Found</p>
@@ -35,5 +33,3 @@ const Products = ({ currentIndex }) => {
 };
 
 export default Products;
-
-
