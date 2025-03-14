@@ -5,11 +5,11 @@ import { useSearchParams } from "react-router";
 
 const Products = ({ currentIndex }) => {
   const [searchParams] = useSearchParams();
-
+  
   const { data, isLoading } = useFetch(
     `${import.meta.env.VITE_REACT_APP_API_URL}/homes?${searchParams.toString()}`
   );
-
+  
   const visibleSlides = 4;
   const translateValue = -(currentIndex * (100 / visibleSlides));
   return (
@@ -17,13 +17,11 @@ const Products = ({ currentIndex }) => {
       <div
         className="flex gap-6 transition-transform duration-300 ease-in-out"
         style={{ transform: `translateX(${translateValue}%)` }}
-      >
+      >  
         {isLoading ? (
           <p>Loading...</p>
         ) : data && data.length > 0 ? (
-          data.map(({ id, ...home }) => (
-              <Card {...home} key={id} id={id}/>
-          ))
+          data.map(({ id, ...home }) => <Card {...home} key={id} id={id} />)
         ) : (
           <p>No Products Found</p>
         )}

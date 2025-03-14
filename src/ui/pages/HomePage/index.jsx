@@ -41,7 +41,7 @@ const Homepage = () => {
       <section className="max-w-[1170px] mx-auto flex  container ">
         <div className=" flex-grow border-r-1 pt-8 border-r-[#e4e1e1] pr-8 left-container cursor-pointer">
 
-          <div className="absolute bottom-75 right-100">
+          <div className="absolute bottom-75 left-200">
             <div className="flex justify-center mt-4">
               {Object.keys(Categories).map((key, index) => (
                 <div
