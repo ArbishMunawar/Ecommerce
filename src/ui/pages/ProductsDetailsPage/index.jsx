@@ -46,7 +46,13 @@ const ProductsDetailPage = () => {
   return (
     <>
       <NavBar />
+
+
       <section className="max-w-[1170px] mx-auto px-4 mt-10 mb-8">
+        <div>
+          <Typography variant="p" className="my-16 text-[0.9rem] font-medium"><span className="text-gray-400">Account / Gaming /</span> {data.title} </Typography>
+        </div>
+
         {/* Top section */}
         <div className="flex gap-12">
           {/* Left section */}

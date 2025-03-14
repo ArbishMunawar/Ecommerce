@@ -5,11 +5,9 @@ import Star from "../../../assets/Icons/Star.jsx";
 import { Link } from "react-router";
 
 const Card = ({id, title, price, description, rating, image }) => { 
-  // console.log("Card ID:", id); 
   const stars = Math.round(rating?.rate || 0);   
 
   return (
-    // <Link to={`/homes/${id}`}>
     <Link to={`/homes/${id}`}>
     <div className="relative">
       <div className="p-4 w-[15rem] rounded-lg bg-[#F5F5F5]">
