@@ -22,44 +22,36 @@ import Footer from "../../common/Footer/index";
 import "./index.css";
 
 const Categories = {
-  "Woman’s Fashion": Womenfashion,
-  "Men’s Fashion": MensFahion,
-  Electronics: elecrtonics,
-  "Home & Lifestyle": HomeImage,
-  Medicine: medicine,
-  Outdoor: outdoor,
-  "Baby’s & Toys": baby,
-  "Groceries & Pets": pets,
-  "Health & Beauty": beauty,
+  "Woman’s Fashion": [Womenfashion, MensFahion, elecrtonics],
+  "Men’s Fashion": [MensFahion, Womenfashion, elecrtonics],
+  Electronics: [elecrtonics, Womenfashion, MensFahion],
+  "Home & Lifestyle": [HomeImage, elecrtonics, MensFahion],
+  Medicine: [medicine,Womenfashion, medicine],
+  Outdoor: [outdoor, elecrtonics, outdoor],
+  "Baby’s & Toys": [baby, elecrtonics, baby],
+  "Groceries & Pets": [pets, outdoor, pets],
+  "Health & Beauty": [beauty, HomeImage, beauty]
 };
-const Homepage = () => {
+const Homepage = ({ setProductId }) => {
   const [category, setCategory] = useState("Home & Lifestyle");
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
+  const handleCategoryClick = (key) => {
+    setCategory(key);
+    setSelectedIndex(0); 
+  };
   return (
     <>
       <NavBar />
-      <section className="max-w-[1170px] mx-auto flex  container ">
-        <div className=" flex-grow border-r-1 pt-8 border-r-[#e4e1e1] pr-8 left-container cursor-pointer">
-
-          <div className="absolute bottom-75 left-200">
-            <div className="flex justify-center mt-4">
-              {Object.keys(Categories).map((key, index) => (
-                <div
-                  key={index}
-                  onClick={() => setCategory(key)}
-                  className={`border-1 border-black rounded-full w-3.5 h-3.5 mx-1 cursor-pointer ${
-                    category === key ? "bg-red-500" : "bg-gray-400"
-                  }`}
-                ></div>
-              ))}
-            </div>
-          </div>
-
-          {Object.keys(Categories).map((key, value) => (
+    
+      <section className="max-w-[1170px] mx-auto flex container justify-between">
+        {/* Left Sidebar */}
+        <div className="relative w-[20rem] border-r pt-8 border-r-[#e4e1e1] pr-8 cursor-pointer">
+          {Object.keys(Categories).map((key) => (
             <div
               key={key}
-              onClick={() => setCategory(key)}
-              className="flex justify-between pb-3"
+              onClick={() => handleCategoryClick(key)}
+              className="flex justify-between pb-3 cursor-pointer"
             >
               <Typography variant="p">{key}</Typography>
               <LeftArrow />
@@ -67,17 +59,34 @@ const Homepage = () => {
           ))}
         </div>
 
-        <div className="pl-8 pt-8 right-container">
-          {category && (
-            <img src={Categories[category]} alt={category} className="" />
-          )}
+        <div className="flex flex-col items-center p-4">
+          <div className="h-[300px] w-full flex items-center justify-center  rounded">
+            <img
+              src={Categories[category][selectedIndex]}
+              alt={category}
+              className="h-[280px] w-auto object-contain rounded"
+            />
+          </div>
+          
+          <div className="flex justify-center gap-2 mt-4">
+            {Categories[category].map((_, index) => (
+              <div
+                key={index}
+                onClick={() => setSelectedIndex(index)}
+                className={`border border-black rounded-full w-3 h-3 cursor-pointer ${
+                  selectedIndex === index ? "bg-red-600" : "bg-gray-600"
+                }`}
+              ></div>
+            ))}
+
+          </div>
         </div>
       </section>
       <FlashSales />
       <BrowseByCategory />
       <BestSelling />
       <EnhanceMusicExperience />
-      <ExploreProducts />
+      <ExploreProducts setProductId={setProductId}/>
       <NewArrival />
       <Testimonial />
       <Footer />

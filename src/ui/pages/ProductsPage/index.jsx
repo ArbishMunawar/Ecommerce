@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import useFetch from "../../../hooks/UseFetch";
 import Card from "../../common/Card/index";
 
-const ProductsPage = () => {
-  const { data, isLoading, error } = useFetch(
-    `${import.meta.env.VITE_REACT_APP_API_URL}/homes?}`
+const ProductsPage = ({ setProductId  }) => {
+  const { data } = useFetch(
+    `${import.meta.env.VITE_REACT_APP_API_URL}/homes`
   );
   
   const [search, setSearch] = useState();
@@ -17,6 +17,14 @@ const ProductsPage = () => {
     setFiltered(filtered);
   };
 
+
+const[cart,setCart]=useState([]);
+
+const handleClick=(item)=>{
+  setCart((prevCart) => [...prevCart, item]);  
+  console.log("Cart Updated:", cart);
+  
+}
   return (
     <div className="max-w-4xl mx-auto mt-10 p-5">
       <div className="flex gap-3 items-center mb-6">
@@ -38,7 +46,7 @@ const ProductsPage = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {filtered.length > 0 ? (
           filtered.map(({ id, ...product }) => (
-            <Card key={id} {...product} />
+            <Card key={id} {...product} setProductId={setProductId} handleClick={handleClick}/>
           ))
         ) : (
           <p className="text-gray-300">

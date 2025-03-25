@@ -31,7 +31,7 @@ const FlashSales = () => {
     secs: 0,
   });
 
-  const deadline = new Date("March 18, 2025").getTime();
+  const deadline = new Date("March 31, 2025").getTime();
 
   const updateTime = () => {
     const now = Date.now();

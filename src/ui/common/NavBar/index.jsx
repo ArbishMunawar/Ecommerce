@@ -5,7 +5,7 @@ import SearchIcon from "../../../assets/Icons/SearchIcon";
 import HeartIcon from "../../../assets/Icons/HeartIcon";
 import CartIcon from "../../../assets/Icons/CartIcon";
 import MenuIcon from "../../../assets/Icons/MenuIcon";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { useState } from "react";
 const NavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -61,7 +61,7 @@ const NavBar = () => {
                   : "hidden"
               }`}
             >
-              <a href="#homepage" className="text-black">
+              <a href="/" className="text-black">
                 Home
               </a>
               <a href="#our-mission" className="text-black">
@@ -96,7 +96,9 @@ const NavBar = () => {
 
               <div className="flex gap-3">
                 <HeartIcon className="w-6 h-6 text-black cursor-pointer" />
+                <Link to={`/CartPage`}>
                 <CartIcon className="w-6 h-6 text-black cursor-pointer" />
+                </Link>
               </div>
             </div>
           </div>

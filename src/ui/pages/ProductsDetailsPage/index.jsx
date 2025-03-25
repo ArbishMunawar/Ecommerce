@@ -61,7 +61,7 @@ const ProductsDetailPage = () => {
               {imgs.map((item, i) => (
                 <div
                   key={item.id}
-                  className="bg-gray-300 h-[138px] rounded w-[170px] flex items-center justify-center cursor-pointer"
+                  className=" h-[138px] rounded w-[170px] flex items-center justify-center cursor-pointer shadow-lg"
                   onClick={() => handleClick(i)}
                 >
                   <img
@@ -73,7 +73,7 @@ const ProductsDetailPage = () => {
               ))}
             </div>
 
-            <div className="bg-gray-300 h-[600px] w-[500px] rounded flex items-center justify-center">
+            <div className=" h-[600px] w-[500px] rounded flex items-center justify-center shadow-lg">
               {selectedImage && (
                 <img
                   src={selectedImage}
